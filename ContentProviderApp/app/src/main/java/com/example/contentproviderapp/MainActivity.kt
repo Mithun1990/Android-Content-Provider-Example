@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.textView)
         val dbHelper = DbHelper(this)
 
-        val id1 = dbHelper.insertStudent("Naim ", "0100", "Dhaa")
-        val id2 = dbHelper.insertStudent("Mithun ", "0122", "Mymensingh")
-        val id3 = dbHelper.insertStudent("Naim Test", "0133", "Dhaka")
-        val id4 = dbHelper.insertStudent("Mithun Test", "0144", "Mymensingh")
-        textView.text = "Data inserted of id: $id1 $id2 $id3 $id4"
+//        val id1 = dbHelper.insertStudent("Naim ", "0100", "Dhaa")
+//        val id2 = dbHelper.insertStudent("Mithun ", "0122", "Mymensingh")
+//        val id3 = dbHelper.insertStudent("Naim Test", "0133", "Dhaka")
+//        val id4 = dbHelper.insertStudent("Mithun Test", "0144", "Mymensingh")
+//        textView.text = "Data inserted of id: $id1 $id2 $id3 $id4"
     }
 }

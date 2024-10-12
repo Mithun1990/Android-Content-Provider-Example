@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.net.Uri
 
 class DbHelper(context: Context?) :
     SQLiteOpenHelper(context, DB_NAME, null, version) {
@@ -60,6 +61,21 @@ class DbHelper(context: Context?) :
         }
         return db.update(TABLE_NAME, cv, "$ID = ?", arrayOf("$id")) > 0
     }
+
+    fun updateStudent(
+        values: ContentValues?,
+        selection: String?,
+        selectionArgs: Array<out String>?
+    ): Int {
+        val db = writableDatabase
+        return db.update(TABLE_NAME, values, selection, selectionArgs)
+    }
+
+    fun deleteStudent(selection: String?, selectionArgs: Array<out String>?): Int {
+        val db = writableDatabase
+        return db.delete(TABLE_NAME, selection, selectionArgs)
+    }
+
 
     fun getStudent(id: Int): Student? {
         val db = readableDatabase

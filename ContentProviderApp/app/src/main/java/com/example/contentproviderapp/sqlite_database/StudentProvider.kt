@@ -26,10 +26,7 @@ class StudentProvider : ContentProvider() {
         return cursor
     }
 
-    override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
-    }
-
+    override fun getType(uri: Uri): String? = null
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         val id = dbHelper.insertStudent(values)
         val itemUri = ContentUris.withAppendedId(StudentContracts.URI, id)
@@ -40,7 +37,9 @@ class StudentProvider : ContentProvider() {
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val ret = dbHelper.deleteStudent(selection, selectionArgs)
+        context?.apply { contentResolver.notifyChange(uri, null) }
+        return ret
     }
 
     override fun update(
@@ -49,6 +48,8 @@ class StudentProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        val ret = dbHelper.updateStudent(values, selection, selectionArgs)
+        context?.apply { contentResolver.notifyChange(uri, null) }
+        return ret
     }
 }
