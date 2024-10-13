@@ -6,7 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.example.contentproviderapp.room_database.PersonProvider
+import com.example.contentproviderapp.room_database.RoomDatabaseHelper
+import com.example.contentproviderapp.room_database.entitiy.Person
 import com.example.contentproviderapp.sqlite_database.DbHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     lateinit var textView: TextView
@@ -20,12 +27,5 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         textView = findViewById(R.id.textView)
-        val dbHelper = DbHelper(this)
-
-//        val id1 = dbHelper.insertStudent("Naim ", "0100", "Dhaa")
-//        val id2 = dbHelper.insertStudent("Mithun ", "0122", "Mymensingh")
-//        val id3 = dbHelper.insertStudent("Naim Test", "0133", "Dhaka")
-//        val id4 = dbHelper.insertStudent("Mithun Test", "0144", "Mymensingh")
-//        textView.text = "Data inserted of id: $id1 $id2 $id3 $id4"
     }
 }

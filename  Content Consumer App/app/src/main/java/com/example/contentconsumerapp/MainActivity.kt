@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.contentconsumerapp.room_cprovider.Person
+import com.example.contentconsumerapp.room_cprovider.PersonConsumer
 import com.example.contentconsumerapp.sqlite_cprovider.Student
 import com.example.contentconsumerapp.sqlite_cprovider.StudentConsumer
 
@@ -33,26 +35,36 @@ class MainActivity : AppCompatActivity() {
         btnDeleteData = findViewById(R.id.btnDeleteData)
 
         val studentConsumer = StudentConsumer(this)
-
+        val personConsumer = PersonConsumer(this)
         btnGetData.setOnClickListener {
-            val studentConsumer = StudentConsumer(this)
             println("Consumer data ${studentConsumer.queryStudentData()}")
-            textView.text = "Consumer data ${studentConsumer.queryStudentData()}"
+
+            println("Consumer data ${personConsumer.getData()}")
+            textView.text = "Consumer data ${personConsumer.getData()}"
         }
         btnInsertData.setOnClickListener {
-            val student = Student(-1, "Forhad", "123445", "Canada")
+            /*val student = Student(-1, "Forhad", "123445", "Canada")
             val uri = studentConsumer.insertData(student);
+*/
+            val person = Person(-1, "Forhad", 23, "Mymensingh")
+            val uri = personConsumer.insertData(person);
             println("Inserted uri $uri")
         }
 
         btnUpdateData.setOnClickListener {
-            val student = Student(-1, "Forhad Naim", "123445", "Sweden")
-            val uri = studentConsumer.updateData(9, student);
+            /*  val student = Student(-1, "Forhad Naim", "123445", "Sweden")
+              val uri = studentConsumer.updateData(9, student);*/
+            val person = Person(2, "Forhad", 15, "Netrokona")
+            val uri = personConsumer.updateData(2, person);
+            println("Inserted uri $uri")
             println("Updated  $uri")
         }
         btnDeleteData.setOnClickListener {
-            val uri = studentConsumer.deleteData(1);
-            println("Deleted  $uri")
+//            val uri = studentConsumer.deleteData(1);
+//            println("Deleted  $uri")
+
+            val ret = personConsumer.deleteData(3);
+            println("Deleted  $ret")
         }
     }
 }

@@ -27,6 +27,12 @@
             android:authorities="com.cprovider.app.provider"
             android:enabled="true"
             android:exported="true" />
+
+        <provider
+            android:name=".room_database.PersonProvider"
+            android:authorities="com.cprovider.app.provider.room"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
